@@ -1,70 +1,18 @@
-# Getting Started with Create React App
+## Hooks
+自從有了 hooks ，程式碼可讀性更高，更有彈性，更易上手
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### hooks 簡單介紹
+捨棄了以往的 class，hook 只能在 function component 內使用，且一般會以 *use*開頭來識別，基礎的 hook 有兩種：*useState*、*useEffect*
 
-## Available Scripts
+### hooks的好處
+- hoc, render props太難寫了且會改變元件階層關係,透過 hooks 將可以將固定的邏輯從元件中抽離出來，以進行獨立的測試和使用，同時不用改變原本元件間的階層關係。
+- react class方法會需要定義生命週期有的內容,hooks只需要去依賴的props,state來做出想要的結果，不必擔心生命週期。
+- …
 
-In the project directory, you can run:
+### hooks的特性與規則
+- 只能在最高層呼叫 ，不能在條件式（conditions）、迴圈（loops）等地方呼叫hooks。
+	- 因為 React 會依賴這些 hooks 呼叫到的順序，當我們將其放到條件式或迴圈時，就會破壞了這些順序，如此會造成錯誤。因此如果有需要用到條件判斷，只需要把判斷式放在 hook 內就可以了。
+- 只能在 React 的 function components 中呼叫 Hook，不能使用一般js or class component裡使用
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### hooks的缺點
+- useEffect 把三個元件狀態合在一起，寫法太過簡單所以使用時要注意，如果沒有加上限制就容易造成不停的觸發
